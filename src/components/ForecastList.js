@@ -14,6 +14,7 @@ const ForecastList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log(url);
         setLoading(true);
         const weatherSearch = await fetch(url);
         const weatherSearchResults = await weatherSearch.json();
