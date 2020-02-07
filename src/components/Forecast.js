@@ -10,6 +10,7 @@ const Weather = styled.section`
     ul {
         list-style-type:none;
         padding-left:0;
+        background-color:#5F809A;
         box-shadow:0px 3px 3px rgba(0,0,0,0.2);
         border-radius:15px;
         max-width:600px;
@@ -24,8 +25,9 @@ const Weather = styled.section`
 
         li {
             display:inline-block;
+            font-size:1.2rem;
             margin:1rem;
-            color:#5F809A;
+            color:white;
             position:relative;
             top:50%;
             transform:translate(0,-50%);
@@ -56,11 +58,8 @@ const Weather = styled.section`
 
     .date__header {
       color:#A8B8C4;
-      position:sticky;
-      top:7.5rem;
       padding-bottom:1rem;
       background-color:white;
-      z-index:2;
       width:100%;
     }
 
