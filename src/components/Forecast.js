@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import cardinalDirection from '../utils/cardinalDirection';
 import dateFormatter from '../utils/dateFormatter';
 
+
 const Weather = styled.section`
     font-family: 'Bahnschrift';
 
@@ -78,10 +79,9 @@ const Forecast = ({ weather }) => {
   const dateHeader = hour === 0 ? <div className="date__header"><h2>{fullDate}</h2></div> : null;
   return (
     <Weather>
-      {console.log(date)}
       {dateHeader}
       <ul>
-        <li className="time">{weather.dt_txt}</li>
+        <li className="time">{time}</li>
         <li className={`wind wind__direction ${weather.wind.speed > 35 ? 'windy' : 'calm'}`}>{cardinalDirection(weather.wind.deg)}</li>
         <li className={`wind wind__speed ${weather.wind.speed > 35 ? 'windy' : 'calm'}`}>{`${Math.floor(weather.wind.speed)}mph`}</li>
         <li className="temperature">
