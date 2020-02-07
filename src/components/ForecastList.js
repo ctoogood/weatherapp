@@ -13,12 +13,16 @@ const ForecastList = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true);
-      const weatherSearch = await fetch(url);
-      const weatherSearchResults = await weatherSearch.json();
-      setLocation(weatherSearchResults.SiteRep.DV.Location);
-      setDays(weatherSearchResults.SiteRep.DV.Location.Period);
-      setLoading(false);
+      try {
+        setLoading(true);
+        const weatherSearch = await fetch(url);
+        const weatherSearchResults = await weatherSearch.json();
+        setLocation(weatherSearchResults.SiteRep.DV.Location);
+        setDays(weatherSearchResults.SiteRep.DV.Location.Period);
+        setLoading(false);
+      } catch (e) {
+        console.log(e);
+      }
     };
     fetchData();
   }, [url]);
