@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-import Bahnschrift from '../fonts/Bahnschrift.ttf';
+import Bahnschrift from '../fonts/bahnschrift.ttf';
 import FrostedCupcake from '../fonts/Frosted Cupcake.ttf';
 
 export default createGlobalStyle`
