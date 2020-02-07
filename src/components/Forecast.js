@@ -69,8 +69,7 @@ const Weather = styled.section`
 `;
 
 const Forecast = ({ weather }) => {
-  const dateString = 'weather.dt_txt';
-  const date = new Date(dateString.replace('', 'T'));
+  const date = new Date(weather.dt_txt);
   const fullDate = dateFormatter(date);
   const hour = date.getHours();
   const minute = date.getMinutes();
@@ -79,9 +78,10 @@ const Forecast = ({ weather }) => {
   const dateHeader = hour === 0 ? <div className="date__header"><h2>{fullDate}</h2></div> : null;
   return (
     <Weather>
+      {console.log(date)}
       {dateHeader}
       <ul>
-        <li className="time">{time}</li>
+        <li className="time">{weather.dt_txt}</li>
         <li className={`wind wind__direction ${weather.wind.speed > 35 ? 'windy' : 'calm'}`}>{cardinalDirection(weather.wind.deg)}</li>
         <li className={`wind wind__speed ${weather.wind.speed > 35 ? 'windy' : 'calm'}`}>{`${Math.floor(weather.wind.speed)}mph`}</li>
         <li className="temperature">
