@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Head = styled.header`
     text-align:center;
-    font-family:Frosted Cupcake;
+    font-family:'Frosted Cupcake';
     color:#5F809A;
 
     h1 {

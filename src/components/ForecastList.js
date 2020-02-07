@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import dateFormatter from '../utils/dateFormatter';
 import Forecast from './Forecast';
 
 const List = styled.section`
