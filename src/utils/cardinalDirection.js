@@ -40,16 +40,16 @@ const cardinalDirection = (angle) => {
   const offsetAngle = angle + degreePerDirection / 2;
   return (
     <>
-    <Wind>
-      {(offsetAngle >= 0 * degreePerDirection && offsetAngle < 1 * degreePerDirection) ? <img className="north" src={RightArrow} alt="N" />
-        : (offsetAngle >= 1 * degreePerDirection && offsetAngle < 2 * degreePerDirection) ? <img className="north-east" src={RightArrow} alt="NE" />
-          : (offsetAngle >= 2 * degreePerDirection && offsetAngle < 3 * degreePerDirection) ? <img className="east" src={RightArrow} alt="E" />
-            : (offsetAngle >= 3 * degreePerDirection && offsetAngle < 4 * degreePerDirection) ? <img className="south-east" src={RightArrow} alt="SE" />
-              : (offsetAngle >= 4 * degreePerDirection && offsetAngle < 5 * degreePerDirection) ? <img className="south" src={RightArrow} alt="S" />
-                : (offsetAngle >= 5 * degreePerDirection && offsetAngle < 6 * degreePerDirection) ? <img className="south-west" src={RightArrow} alt="SW" />
-                  : (offsetAngle >= 6 * degreePerDirection && offsetAngle < 7 * degreePerDirection) ? <img className="west" src={RightArrow} alt="W" />
-                    : <img className="north-west" src={RightArrow} alt="NW" />}
-    </Wind>
+      <Wind>
+        {(offsetAngle >= 0 * degreePerDirection && offsetAngle < 1 * degreePerDirection) ? <img className="north" src={RightArrow} alt="N" />
+          : (offsetAngle >= 1 * degreePerDirection && offsetAngle < 2 * degreePerDirection) ? <img className="north-east" src={RightArrow} alt="NE" />
+            : (offsetAngle >= 2 * degreePerDirection && offsetAngle < 3 * degreePerDirection) ? <img className="east" src={RightArrow} alt="E" />
+              : (offsetAngle >= 3 * degreePerDirection && offsetAngle < 4 * degreePerDirection) ? <img className="south-east" src={RightArrow} alt="SE" />
+                : (offsetAngle >= 4 * degreePerDirection && offsetAngle < 5 * degreePerDirection) ? <img className="south" src={RightArrow} alt="S" />
+                  : (offsetAngle >= 5 * degreePerDirection && offsetAngle < 6 * degreePerDirection) ? <img className="south-west" src={RightArrow} alt="SW" />
+                    : (offsetAngle >= 6 * degreePerDirection && offsetAngle < 7 * degreePerDirection) ? <img className="west" src={RightArrow} alt="W" />
+                      : <img className="north-west" src={RightArrow} alt="NW" />}
+      </Wind>
     </>
   );
 };

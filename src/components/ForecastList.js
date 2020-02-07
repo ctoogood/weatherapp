@@ -4,7 +4,23 @@ import dateFormatter from '../utils/dateFormatter';
 import Forecast from './Forecast';
 
 const List = styled.section`
+  font-family: Bahnschrift;
+  color:#5F809A;
   text-align:center;
+
+  h1 {
+    font-weight:lighter;
+    font-size:3rem;
+    position:sticky;
+    top:0;
+    background-color:white;
+    z-index:3;
+    padding:2rem;
+  }
+
+  h2 {
+    color:#A8B8C4;
+  }
 `;
 
 const ForecastList = () => {
@@ -42,7 +58,7 @@ const ForecastList = () => {
         <div>
           <h1>{`${name}, ${country}`}</h1>
           <h2>{dateToday}</h2>
-          {weather.map((time) => <Forecast weather={time} />)}
+          {weather.map((time) => (<Forecast weather={time} />))}
         </div>
       )}
     </List>

@@ -5,14 +5,26 @@ import cardinalDirection from '../utils/cardinalDirection';
 import dateFormatter from '../utils/dateFormatter';
 
 const Weather = styled.section`
+    font-family: Bahnschrift;
+    
+
     ul {
         list-style-type:none;
         padding-left:0;
+        box-shadow:0px 3px 3px rgba(0,0,0,0.2);
+        border-radius:15px;
+        max-width:600px;
+        margin:auto;
+        margin-bottom:4rem;
 
 
         li {
             display:inline-block;
             margin:1rem;
+            color:#5F809A;
+            position:relative;
+            top:50%;
+            transform:translate(0,-50%);
         }
     }
 
@@ -20,12 +32,36 @@ const Weather = styled.section`
       height:50px;
       width:50px;
       position:relative;
-      bottom:-20px;
+      bottom:-30px;
 
       img {
         object-fit:cover;
         width:100%;
       }
+    }
+
+    .windy {
+      filter: invert(.2) sepia(1) saturate(5) hue-rotate(320deg);
+      color:#F15D5D;
+    }
+
+    .calm {
+      filter: invert(.2) sepia(1) saturate(5) hue-rotate(175deg);
+      color:#7391B3;
+    }
+
+    .date__header {
+      color:#A8B8C4;
+      position:sticky;
+      top:7.5rem;
+      padding-bottom:1rem;
+      background-color:white;
+      z-index:2;
+      width:100%;
+    }
+
+    .time {
+      font-size:1.5rem;
     }
 `;
 
@@ -36,13 +72,14 @@ const Forecast = ({ weather }) => {
   const minute = date.getMinutes();
   const time = hour < 10 ? `0${hour}:${minute}0` : `${hour}:${minute}0`;
   const { rain } = weather;
+  const dateHeader = hour === 0 ? <div className="date__header"><h2>{fullDate}</h2></div> : null;
   return (
     <Weather>
-      {hour === 0 ? <h2>{fullDate}</h2> : null}
+      {dateHeader}
       <ul>
         <li className="time">{time}</li>
-        <li className="wind wind__direction">{cardinalDirection(weather.wind.deg)}</li>
-        <li className="wind wind__speed">{`${Math.floor(weather.wind.speed)}mph`}</li>
+        <li className={`wind wind__direction ${weather.wind.speed > 35 ? 'windy' : 'calm'}`}>{cardinalDirection(weather.wind.deg)}</li>
+        <li className={`wind wind__speed ${weather.wind.speed > 35 ? 'windy' : 'calm'}`}>{`${Math.floor(weather.wind.speed)}mph`}</li>
         <li className="temperature">
           {`${Math.floor(weather.main.temp - 273.15)}`}
           &deg;
@@ -71,5 +108,6 @@ Forecast.propTypes = {
     main: PropTypes.number.isRequired,
     weather: PropTypes.string.isRequired,
     clouds: PropTypes.number.isRequired,
+    rain: PropTypes.number.isRequired,
   }).isRequired,
 };
