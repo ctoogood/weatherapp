@@ -8,7 +8,6 @@ const Wind = styled.section`
     height:20px;
     width:20px;
     position:relative;
-    bottom:-20px;
 
     img {
         object-fit:cover;
