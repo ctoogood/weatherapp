@@ -49,15 +49,12 @@ const ForecastList = () => {
   }, [url]);
 
   const { name, country } = location;
-  const today = new Date();
-  const dateToday = dateFormatter(today);
 
   return (
     <List>
       {loading ? <h1>Loading...</h1> : (
         <div>
           <h1>{`${name}, ${country}`}</h1>
-          <h2>{dateToday}</h2>
           {weather.map((time) => (<Forecast weather={time} />))}
         </div>
       )}
