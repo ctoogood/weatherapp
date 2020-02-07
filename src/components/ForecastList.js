@@ -13,7 +13,6 @@ const ForecastList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log(url);
         setLoading(true);
         const weatherSearch = await fetch(url);
         const weatherSearchResults = await weatherSearch.json();
@@ -33,17 +32,16 @@ const ForecastList = () => {
     <>
       {loading ? <h1>Loading...</h1> : (
         <div>
-          {console.log(weather)}
           <h1>{`${name}, ${country}`}</h1>
           {weather.map((time) => (
             <div>
               <h2>{time.dt_txt}</h2>
               <ul>
-                <li>{time.wind.deg}</li>
-                <li>{time.wind.speed}</li>
-                <li>{time.main.temp}</li>
-                <li>{time.weather[0].description}</li>
-                <li>{time.clouds.all}</li>
+                <li>{`${time.wind.deg}`}</li>
+                <li>{`${time.wind.speed}`}</li>
+                <li>{`${time.main.temp}`}</li>
+                <li>{`${time.weather[0].description}`}</li>
+                <li>{`${time.clouds.all}`}</li>
               </ul>
             </div>
           ))}
