@@ -5,7 +5,7 @@ const ForecastList = () => {
   const APIkey = process.env.REACT_APP_WEATHER_API_KEY;
   const locationId = 352262;
   const resource = `val/wxfcs/all/json/${locationId}`;
-  const url = `https://datapoint.metoffice.gov.uk/public/data/${resource}?res=3hourly&key=${APIkey}`;
+  const url = `http://datapoint.metoffice.gov.uk/public/data/${resource}?res=3hourly&key=${APIkey}`;
 
   const [location, setLocation] = useState({});
   const [days, setDays] = useState([]);
