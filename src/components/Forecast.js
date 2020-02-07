@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import cardinalDirection from '../utils/cardinalDirection';
 import dateFormatter from '../utils/dateFormatter';
-import '../index.css';
-
 
 const Weather = styled.section`
     font-family: 'Bahnschrift';
@@ -71,7 +69,8 @@ const Weather = styled.section`
 `;
 
 const Forecast = ({ weather }) => {
-  const date = new Date(weather.dt_txt);
+  const dateString = 'weather.dt_txt';
+  const date = new Date(dateString.replace('', 'T'));
   const fullDate = dateFormatter(date);
   const hour = date.getHours();
   const minute = date.getMinutes();
