@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import cardinalDirection from '../utils/cardinalDirection';
 import dateFormatter from '../utils/dateFormatter';
+import '../index.css';
+
 
 const Weather = styled.section`
     font-family: 'Bahnschrift';
