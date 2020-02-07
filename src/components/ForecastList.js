@@ -34,12 +34,14 @@ const ForecastList = () => {
   return (
     <>
       {console.log(days)}
-      <div>
-        <h1>
-          {`${name}, ${country}`}
-        </h1>
-        {days.map((day) => <Forecast weather={day} />)}
-      </div>
+      {loading ? <h1>Loading...</h1> : (
+        <div>
+          <h1>
+            {`${name}, ${country}`}
+          </h1>
+          {days.map((day) => <Forecast weather={day} />)}
+        </div>
+      )}
     </>
   );
 };
