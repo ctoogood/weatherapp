@@ -6,6 +6,10 @@ const Head = styled.header`
     font-family:Frosted Cupcake;
     color:#5F809A;
 
+    h1 {
+        font-weight:lighter;
+    }
+
     @media only screen and (min-width:1000px) {
         text-align:left;
         padding-left:1rem;

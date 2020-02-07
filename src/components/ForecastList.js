@@ -19,7 +19,7 @@ const List = styled.section`
   }
 
   h2 {
-    color:#A8B8C4;
+    color:#C07979;
   }
 `;
 

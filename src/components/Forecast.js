@@ -6,7 +6,6 @@ import dateFormatter from '../utils/dateFormatter';
 
 const Weather = styled.section`
     font-family: Bahnschrift;
-    
 
     ul {
         list-style-type:none;
@@ -16,6 +15,11 @@ const Weather = styled.section`
         max-width:600px;
         margin:auto;
         margin-bottom:4rem;
+        transition:all 0.5s ease-in-out;
+
+        &:hover {
+          transform:scale(1.3);
+        }
 
 
         li {
