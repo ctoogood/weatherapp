@@ -86,7 +86,7 @@ const Forecast = ({ weather }) => {
     <Weather>
       {dateHeader}
       <ul>
-        <li className="time">{`${hour}:${minute}0`}</li>
+        <li className="time">{hour}</li>
         <li className={`wind wind__direction ${weather.wind.speed * 2.237 > 35 ? 'windy' : 'calm'}`}>{cardinalDirection(weather.wind.deg)}</li>
         <li className="wind wind__speed">{`${Math.floor(weather.wind.speed * 2.237)}mph`}</li>
         <li className="temperature">
