@@ -80,13 +80,14 @@ const Forecast = ({ weather }) => {
   const fullDate = dateFormatter(date);
   const hour = date.getHours();
   const minute = date.getMinutes();
+  const time = (hour < 10 ? `0${hour}:${minute}0` : `${hour}:${minute}0`);
   const { rain } = weather;
   const dateHeader = hour === 0 ? <div className="date__header"><h2>{fullDate}</h2></div> : null;
   return (
     <Weather>
       {dateHeader}
       <ul>
-        <li className="time">{hour}</li>
+        <li className="time">{time}</li>
         <li className={`wind wind__direction ${weather.wind.speed * 2.237 > 35 ? 'windy' : 'calm'}`}>{cardinalDirection(weather.wind.deg)}</li>
         <li className="wind wind__speed">{`${Math.floor(weather.wind.speed * 2.237)}mph`}</li>
         <li className="temperature">
