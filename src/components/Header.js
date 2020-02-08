@@ -1,15 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
+import Logo from '../images/weatherHead.png';
 
 const Head = styled.header`
     text-align:center;
     color:#5F809A;
+    max-height:100px;
+    max-width:200px;
+    margin:auto;
+    position:relative;
+    left:-1rem;
+
+    img {
+      object-fit:cover;
+      width:100%;
+      padding:1rem;
+    }
 
     h1 {
         font-weight:lighter;
         text-decoration:underline;
         span {
-          font-weight:bold;
+          font-weight:500;
         }
     }
 
@@ -24,7 +36,7 @@ const Head = styled.header`
 
 const Header = () => (
   <Head>
-    <h1><span>T</span>he <span>W</span>eather<span>H</span>ead</h1>
+    <img src={Logo} alt="The WeatherHead" />
   </Head>
 );
 

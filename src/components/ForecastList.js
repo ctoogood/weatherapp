@@ -6,6 +6,15 @@ const List = styled.section`
   color:#5F809A;
   text-align:center;
 
+
+  ul {
+    list-style-type:none;
+
+    li {
+      display:inline-block;
+    }
+  }
+
   h1 {
     font-weight:lighter;
     font-size:3rem;
@@ -52,7 +61,7 @@ const ForecastList = () => {
     <List>
       {loading ? <h1>Loading...</h1> : (
         <div>
-          <h1>{`${name}, ${country}`}</h1>
+          <h1>{`${name}`}</h1>
           {weather.map((time) => (<Forecast weather={time} />))}
         </div>
       )}

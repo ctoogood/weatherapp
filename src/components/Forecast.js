@@ -9,14 +9,15 @@ const Weather = styled.section`
 
     ul {
         list-style-type:none;
-        padding-left:0;
+        padding:0;
         background-color:#5F809A;
         box-shadow:0px 3px 3px rgba(0,0,0,0.2);
         border-radius:15px;
         max-width:600px;
         margin:auto;
-        margin-bottom:4rem;
+        margin-bottom:2rem;
         transition:all 0.5s ease-in-out;
+        justify-content:center;
 
         @media only screen and (min-width:800px) {
           &:hover {
@@ -24,17 +25,16 @@ const Weather = styled.section`
           }
         }
 
-        
-
-
         li {
             display:inline-block;
-            font-size:1.2rem;
-            margin:1rem;
             color:white;
             position:relative;
+            padding:5px;
             top:50%;
-            transform:translate(0,-50%);
+            transform:translate(0, -50%);
+            @media only screen and (min-width:800px) {
+              margin:0rem 1rem 0rem;
+            }
         }
     }
 
@@ -68,7 +68,10 @@ const Weather = styled.section`
     }
 
     .time {
-      font-size:1.5rem;
+      font-weight:bold;
+      @media only screen and (min-width:800px) {
+        font-size:1.2rem;
+      }
     }
 `;
 
@@ -86,7 +89,7 @@ const Forecast = ({ weather }) => {
       <ul>
         <li className="time">{time}</li>
         <li className={`wind wind__direction ${weather.wind.speed > 35 ? 'windy' : 'calm'}`}>{cardinalDirection(weather.wind.deg)}</li>
-        <li className={`wind wind__speed ${weather.wind.speed > 35 ? 'windy' : 'calm'}`}>{`${Math.floor(weather.wind.speed)}mph`}</li>
+        <li className="wind wind__speed">{`${Math.floor(weather.wind.speed)}mph`}</li>
         <li className="temperature">
           {`${Math.floor(weather.main.temp - 273.15)}`}
           &deg;
