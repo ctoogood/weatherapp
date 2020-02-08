@@ -85,7 +85,7 @@ const Forecast = ({ weather }) => {
   const dateHeader = hour === 0 ? <div className="date__header"><h2>{fullDate}</h2></div> : null;
   return (
     <Weather>
-      {dateHeader}
+      <h2>{fullDate}</h2>
       <ul>
         <li className="time">{time}</li>
         <li className={`wind wind__direction ${weather.wind.speed * 2.237 > 35 ? 'windy' : 'calm'}`}>{cardinalDirection(weather.wind.deg)}</li>
