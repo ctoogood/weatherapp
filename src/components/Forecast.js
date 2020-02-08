@@ -6,7 +6,7 @@ import dateFormatter from '../utils/dateFormatter';
 
 
 const Weather = styled.section`
-    font-family: 'Roboto', 'Bahnschrift', 'Sans Serif';
+    font-family: 'Roboto', 'Bahnschrift', 'Segoe UI', 'San Francisco';
 
     ul {
         list-style-type:none;
@@ -19,9 +19,13 @@ const Weather = styled.section`
         margin-bottom:4rem;
         transition:all 0.5s ease-in-out;
 
-        &:hover {
-          transform:scale(1.3);
+        @media only screen and (min-width:800px) {
+          &:hover {
+            transform:scale(1.2);
+          }
         }
+
+        
 
 
         li {

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Head = styled.header`
     text-align:center;
-    font-family:'Roboto', 'Segoe UI';
+    font-family:'Roboto', 'Segoe UI', San Francisco;
     color:#5F809A;
 
     h1 {
