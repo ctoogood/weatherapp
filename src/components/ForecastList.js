@@ -55,7 +55,7 @@ const ForecastList = () => {
     fetchData();
   }, [url]);
 
-  const { name, country } = location;
+  const { name } = location;
 
   return (
     <List>
