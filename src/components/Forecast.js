@@ -80,7 +80,7 @@ const Forecast = ({ weather }) => {
   const fullDate = dateFormatter(date);
   const hour = date.getHours();
   const minute = date.getMinutes();
-  const time = hour < 10 ? `0${hour}:${minute}0` : `${hour}:${minute}0`;
+  const time = (hour < 10 ? `0${hour}:${minute}0` : `${hour}:${minute}0`);
   const { rain } = weather;
   const dateHeader = hour === 0 ? <div className="date__header"><h2>{fullDate}</h2></div> : null;
   return (
