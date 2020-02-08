@@ -6,7 +6,6 @@ import dateFormatter from '../utils/dateFormatter';
 
 
 const Weather = styled.section`
-    font-family: 'Roboto', 'Bahnschrift', 'Segoe UI', 'San Francisco';
 
     ul {
         list-style-type:none;

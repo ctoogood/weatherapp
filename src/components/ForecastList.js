@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Forecast from './Forecast';
 
 const List = styled.section`
-  font-family: 'Segoe UI';
   color:#5F809A;
   text-align:center;
 
