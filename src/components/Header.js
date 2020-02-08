@@ -3,11 +3,15 @@ import styled from 'styled-components';
 
 const Head = styled.header`
     text-align:center;
-    font-family:'Frosted Cupcake';
+    font-family:'Roboto', 'Segoe UI';
     color:#5F809A;
 
     h1 {
         font-weight:lighter;
+        text-decoration:underline;
+        span {
+          font-weight:bold;
+        }
     }
 
     @media only screen and (min-width:1000px) {
@@ -21,7 +25,7 @@ const Head = styled.header`
 
 const Header = () => (
   <Head>
-    <h1>The WeatherHead</h1>
+    <h1><span>T</span>he <span>W</span>eather<span>H</span>ead</h1>
   </Head>
 );
 
