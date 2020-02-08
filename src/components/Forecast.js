@@ -76,7 +76,8 @@ const Weather = styled.section`
 `;
 
 const Forecast = ({ weather }) => {
-  const date = new Date(weather.dt_txt);
+  const iD = weather.dt_txt.split(/[- :]/);
+  const date = new Date(iD[0], iD[1] - 1, iD[2], iD[3], iD[4], iD[5]);
   const fullDate = dateFormatter(date);
   const hour = date.getHours();
   const minute = date.getMinutes();
