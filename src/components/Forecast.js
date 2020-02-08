@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import cardinalDirection from '../utils/cardinalDirection';
 import dateFormatter from '../utils/dateFormatter';
+import windColorPicker from '../utils/windColorPicker';
 
 
 const Weather = styled.section`
@@ -50,14 +51,34 @@ const Weather = styled.section`
       }
     }
 
-    .windy {
-      filter: invert(.2) sepia(1) saturate(5) hue-rotate(320deg);
-      color:#F15D5D;
+    .ten {
+      filter: invert(.2) sepia(1) saturate(3) hue-rotate(130deg);
+      color:#7391B3;
     }
 
-    .calm {
-      filter: invert(.2) sepia(1) saturate(5) hue-rotate(175deg);
+    .twenty {
+      filter: invert(0.5) sepia(1) saturate(3) hue-rotate(170deg);
       color:#7391B3;
+    }
+
+    .thirty {
+      filter: invert(0.5) sepia(1) saturate(3) hue-rotate(360deg);
+      color:#7391B3;
+    }
+
+    .forty {
+      filter: invert(0.5) sepia(1) saturate(3) hue-rotate(330deg);
+      color:#7391B3;
+    }
+
+    .fifty {
+      filter: invert(0.5) sepia(1) saturate(3) hue-rotate(310deg);
+      color:#7391B3;
+    }
+
+    .windy {
+      filter: invert(.3) sepia(1) saturate(3) hue-rotate(355deg);
+      color:#F15D5D;
     }
 
     .date__header {
@@ -84,13 +105,15 @@ const Forecast = ({ weather }) => {
   const time = (hour < 10 ? `0${hour}:${minute}0` : `${hour}:${minute}0`);
   const { rain } = weather;
   const dateHeader = hour === 0 ? <div className="date__header"><h2>{fullDate}</h2></div> : null;
+  const windColor = windColorPicker(Math.floor(weather.wind.speed * 2.237));
+
   return (
     <Weather>
       {dateHeader}
       <ul>
         <li className="time">{time}</li>
-        <li className={`wind wind__direction ${weather.wind.speed * 2.237 > 35 ? 'windy' : 'calm'}`}>{cardinalDirection(weather.wind.deg)}</li>
-        <li className="wind wind__speed">{`${Math.floor(weather.wind.speed * 2.237)}mph`}</li>
+        <li className={`wind wind__direction ${windColor}`}>{cardinalDirection(weather.wind.deg)}</li>
+        <li className="color wind wind__speed">{`${Math.floor(weather.wind.speed * 2.237)}mph`}</li>
         <li className="temperature">
           {`${Math.floor(weather.main.temp - 273.15)}`}
           &deg;
