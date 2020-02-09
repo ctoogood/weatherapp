@@ -1,45 +1,59 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Logo from '../images/theWeatherHead.png';
 import ForecastSearch from './ForecastSearch';
+import { WeatherContext } from '../context/index';
+
 
 const Head = styled.header`
-    color:#5F809A;
-    max-width:300px;
-    margin:auto;
-    position:relative;
+  text-align:center;
+  margin:0;
+  background-color:white;
+
+  @media only screen and (min-width:1000px) {
+    width:100vw;
+    position:fixed;
+    top:0;
+    height:6rem;
+    z-index:4;
+    padding-bottom:1rem;
 
     img {
-      object-fit:cover;
-      width:100%;
-      padding:1rem;
-      position:relative;
-
-      left:-1rem;
+      position:absolute;
+      left:1rem;
     }
 
     h1 {
-        font-weight:lighter;
-        text-decoration:underline;
-        span {
-          font-weight:500;
-        }
+      font-size:2rem;
+      padding:1rem;
     }
+  }
 
-    @media only screen and (min-width:1000px) {
-        text-align:left;
-        padding-left:1rem;
-        position:fixed;
-        top:0;
-        z-index:4;
-    }
+  img {
+    width:300px;
+    
+  }
+
+  h1 {
+    font-weight:lighter;
+    color:#5F809A;
+  }
 `;
 
-const Header = () => (
-  <Head>
-    <img src={Logo} alt="The WeatherHead" />
-    <ForecastSearch />
-  </Head>
-);
+const Header = () => {
+  const appContext = useContext(WeatherContext);
+  const {
+    location,
+  } = appContext;
+  return (
+    <Head>
+      <section>
+        <img src={Logo} alt="The WeatherHead" />
+        <h1>{location.name}</h1>
+        <ForecastSearch />
+      </section>
+    </Head>
+  );
+};
 
 export default Header;

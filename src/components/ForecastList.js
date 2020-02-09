@@ -7,6 +7,9 @@ import Forecast from './Forecast';
 const List = styled.section`
   color:#5F809A;
   text-align:center;
+  @media only screen and (min-width:1000px) {
+    margin-top:7rem;
+  }
 
   h1 {
     font-weight:lighter;
@@ -34,7 +37,6 @@ const ForecastList = () => {
     <List>
       {loading ? <h1>Loading...</h1> : location ? (
         <div>
-          <h1>{`${location.name}`}</h1>
           {weather.map((time) => (<Forecast weather={time} />))}
         </div>
       ) : <h1>Location Not Recognised</h1>}
