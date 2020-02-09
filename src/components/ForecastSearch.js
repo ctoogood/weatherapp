@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { WeatherContext } from '../context/index';
 
 const Search = styled.section`
   height:3rem;
@@ -55,19 +56,20 @@ const Search = styled.section`
 `;
 
 const ForecastSearch = () => {
-
-    return (
-      <Search>
-        <form id="form" >
-          <div className="search__input">
-            <input type="text" id="search" placeholder="Search for a location..." autoComplete="off" />
-            <button type="submit">
-                Search
-            </button>
-          </div>
-        </form>
-      </Search>
-    );
+  const appContext = useContext(WeatherContext);
+  const { handleSearchChange, handleFormSubmit } = appContext;
+  return (
+    <Search>
+      <form id="form" onSubmit={(e) => handleFormSubmit(e)}>
+        <div className="search__input">
+          <input onChange={(e) => handleSearchChange(e)} type="text" id="search" placeholder="Search for a location..." autoComplete="off" />
+          <button type="submit">
+            Search
+          </button>
+        </div>
+      </form>
+    </Search>
+  );
 };
 
 export default ForecastSearch;

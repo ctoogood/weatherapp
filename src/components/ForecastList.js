@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable no-nested-ternary */
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { WeatherContext } from '../context/index';
 import Forecast from './Forecast';
 
 const List = styled.section`
@@ -24,40 +26,18 @@ const List = styled.section`
 `;
 
 const ForecastList = () => {
-  const APIkey = process.env.REACT_APP_WEATHER_API_KEY;
-  const locationName = 'Lerwick';
-  const url = ` https://api.openweathermap.org/data/2.5/forecast?q=${locationName},gb&APPID=${APIkey}`;
-
-  const [weather, setWeather] = useState([]);
-  const [location, setLocation] = useState({});
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const weatherSearch = await fetch(url);
-        const weatherSearchResults = await weatherSearch.json();
-        setLocation(weatherSearchResults.city);
-        setWeather(weatherSearchResults.list);
-        setLoading(false);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    fetchData();
-  }, [url]);
-
-  const { name } = location;
-
+  const appContext = useContext(WeatherContext);
+  const {
+    weather, location, loading,
+  } = appContext;
   return (
     <List>
-      {loading ? <h1>Loading...</h1> : (
+      {loading ? <h1>Loading...</h1> : location ? (
         <div>
-          <h1>{`${name}`}</h1>
+          <h1>{`${location.name}`}</h1>
           {weather.map((time) => (<Forecast weather={time} />))}
         </div>
-      )}
+      ) : <h1>Location Not Recognised</h1>}
     </List>
   );
 };
