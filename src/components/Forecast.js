@@ -19,6 +19,8 @@ const Weather = styled.section`
         margin-bottom:2rem;
         transition:all 0.5s ease-in-out;
         justify-content:center;
+        padding-bottom:1.5rem;
+
 
         @media only screen and (min-width:800px) {
           &:hover {
@@ -31,19 +33,21 @@ const Weather = styled.section`
             color:white;
             position:relative;
             padding:5px;
-            top:50%;
-            transform:translate(0, -50%);
             @media only screen and (min-width:800px) {
               margin:0rem 1rem 0rem;
             }
         }
     }
 
+    .icon__li {
+      bottom:-20px;
+
+    }
+
     .icon__wrapper {
       height:50px;
       width:50px;
       position:relative;
-      bottom:-30px;
 
       img {
         object-fit:cover;
@@ -52,7 +56,7 @@ const Weather = styled.section`
     }
 
     .ten {
-      filter: invert(.2) sepia(1) saturate(3) hue-rotate(130deg);
+      filter: invert(0.5) sepia(1) saturate(3) hue-rotate(130deg);
       color:#7391B3;
     }
 
@@ -90,8 +94,12 @@ const Weather = styled.section`
 
     .time {
       font-weight:bold;
+      display:block;
+      font-size:1.5rem;
+      top:1rem;
       @media only screen and (min-width:800px) {
-        font-size:1.2rem;
+        display:inline-block;
+        top:0;
       }
     }
 `;
@@ -118,7 +126,7 @@ const Forecast = ({ weather }) => {
           {`${Math.floor(weather.main.temp - 273.15)}`}
           &deg;
         </li>
-        <li>
+        <li className="icon__li">
           <div className="icon__wrapper">
             <img src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`} alt={weather.weather[0].description} />
           </div>

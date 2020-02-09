@@ -6,15 +6,6 @@ const List = styled.section`
   color:#5F809A;
   text-align:center;
 
-
-  ul {
-    list-style-type:none;
-
-    li {
-      display:inline-block;
-    }
-  }
-
   h1 {
     font-weight:lighter;
     font-size:3rem;
@@ -23,6 +14,8 @@ const List = styled.section`
     background-color:white;
     z-index:3;
     padding:2rem;
+    padding-top:0;
+    margin-top:2rem;
   }
 
   h2 {
