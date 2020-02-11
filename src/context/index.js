@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
 import React, { useState, useEffect } from 'react';
 import usePersistedState from '../utils/usePersistedState';
 
@@ -12,8 +14,9 @@ const WeatherProvider = (props) => {
   const [loading, setLoading] = useState(false);
   const [searchLocation, setSearchLocation] = usePersistedState('searchLocation', 'Lerwick');
   const [query, setQuery] = useState('');
+  const [searchError, setSearchError] = useState(false);
 
-  const url = ` https://api.openweathermap.org/data/2.5/forecast?q=${searchLocation},gb&APPID=${APIkey}`;
+  const url = `https://api.openweathermap.org/data/2.5/forecast?q=${searchLocation},gb&APPID=${APIkey}`;
 
 
   const handleSearchChange = (e) => {
@@ -33,8 +36,13 @@ const WeatherProvider = (props) => {
         const weatherSearch = await fetch(url);
         const weatherSearchResults = await weatherSearch.json();
         localStorage.setItem(searchLocation, JSON.stringify(weatherSearchResults));
-        setLocation(weatherSearchResults.city);
-        setWeather(weatherSearchResults.list);
+        if (weatherSearchResults.city) {
+          setSearchError(false);
+          setLocation(weatherSearchResults.city);
+          setWeather(weatherSearchResults.list);
+        } else {
+          setSearchError(true);
+        }
         setLoading(false);
       } catch (e) {
         console.log(e);
@@ -48,6 +56,7 @@ const WeatherProvider = (props) => {
       weather,
       location,
       loading,
+      searchError,
       handleSearchChange,
       handleFormSubmit,
     }}

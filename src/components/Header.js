@@ -43,13 +43,13 @@ const Head = styled.header`
 const Header = () => {
   const appContext = useContext(WeatherContext);
   const {
-    location,
+    location, searchError
   } = appContext;
   return (
     <Head>
       <section>
         <img src={Logo} alt="The WeatherHead" />
-        <h1>{location.name}</h1>
+        {searchError ? <h1>Location Not Found</h1> : <h1>{location.name}</h1>}
         <ForecastSearch />
       </section>
     </Head>

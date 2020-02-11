@@ -8,7 +8,7 @@ const List = styled.section`
   color:#5F809A;
   text-align:center;
   @media only screen and (min-width:1000px) {
-    margin-top:7rem;
+    margin-top:8rem;
   }
 
   h1 {
@@ -31,15 +31,15 @@ const List = styled.section`
 const ForecastList = () => {
   const appContext = useContext(WeatherContext);
   const {
-    weather, location, loading,
+    weather, searchError, loading,
   } = appContext;
   return (
     <List>
-      {loading ? <h1>Loading...</h1> : location ? (
+      {loading ? <h1>Loading...</h1> : searchError === false ? (
         <div>
           {weather.map((time) => (<Forecast weather={time} />))}
         </div>
-      ) : <h1>Location Not Recognised</h1>}
+      ) : null}
     </List>
   );
 };
