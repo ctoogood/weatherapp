@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import ReactTooltip from 'react-tooltip'
 import cardinalDirection from '../utils/cardinalDirection';
 import dateFormatter from '../utils/dateFormatter';
 import windColorPicker from '../utils/windColorPicker';
@@ -24,7 +25,6 @@ const Weather = styled.section`
 
         @media only screen and (min-width:800px) {
           &:hover {
-            transform:scale(1.2);
           }
         }
 
@@ -119,23 +119,44 @@ const Forecast = ({ weather }) => {
     <Weather>
       {dateHeader}
       <ul>
-        <li className="time">{time}</li>
-        <li className={`wind wind__direction ${windColor}`}>{cardinalDirection(weather.wind.deg)}</li>
-        <li className="color wind wind__speed">{`${Math.floor(weather.wind.speed * 2.237)}mph`}</li>
-        <li className="temperature">
+        <li data-tip data-for="time" className="time">{time}</li>
+        <ReactTooltip id="time" type="info">
+          <span>Time</span>
+        </ReactTooltip>
+        <li data-tip data-for="wind-d" className={`wind wind__direction ${windColor}`}>{cardinalDirection(weather.wind.deg)}</li>
+        <ReactTooltip id="wind-d" type="info">
+          <span>Wind Direction</span>
+        </ReactTooltip>
+        <li data-tip data-for="wind-s" className="color wind wind__speed">{`${Math.floor(weather.wind.speed * 2.237)}mph`}</li>
+        <ReactTooltip id="wind-s" type="info">
+          <span>Wind Speed</span>
+        </ReactTooltip>
+        <li data-tip data-for="temp" className="temperature">
           {`${Math.floor(weather.main.temp - 273.15)}`}
           &deg;
         </li>
-        <li className="icon__li">
+        <ReactTooltip id="temp" type="info">
+          <span>Temperature</span>
+        </ReactTooltip>
+        <li data-tip data-for="weather" className="icon__li">
           <div className="icon__wrapper">
             <img src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`} alt={weather.weather[0].description} />
           </div>
         </li>
-        <li className="rain">
+        <ReactTooltip id="weather" type="info">
+          <span>Weather</span>
+        </ReactTooltip>
+        <li data-tip data-for="precip" className="rain">
           {rain ? Math.round(rain['3h'] * 10) / 10 : 0}
           mm
         </li>
-        <li className="cloud__cover">{`${weather.clouds.all}%`}</li>
+        <ReactTooltip id="precip" type="info">
+          <span>Precipitation</span>
+        </ReactTooltip>
+        <li data-tip data-for="cloud" className="cloud__cover">{`${weather.clouds.all}%`}</li>
+        <ReactTooltip id="cloud" type="info">
+          <span>Cloud Cover</span>
+        </ReactTooltip>
       </ul>
     </Weather>
   );

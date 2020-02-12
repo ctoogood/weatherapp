@@ -37,6 +37,7 @@ const WeatherProvider = (props) => {
         const weatherSearchResults = await weatherSearch.json();
         localStorage.setItem(searchLocation, JSON.stringify(weatherSearchResults));
         if (weatherSearchResults.city) {
+          console.log(weatherSearchResults);
           setSearchError(false);
           setLocation(weatherSearchResults.city);
           setWeather(weatherSearchResults.list);
