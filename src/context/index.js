@@ -15,6 +15,8 @@ const WeatherProvider = (props) => {
   const [searchLocation, setSearchLocation] = usePersistedState('searchLocation', 'Lerwick');
   const [query, setQuery] = useState('');
   const [searchError, setSearchError] = useState(false);
+  const [checked, setChecked] = useState(false);
+  const [windUnits, setWindUnits] = useState('mph');
 
   const url = `https://api.openweathermap.org/data/2.5/forecast?q=${searchLocation},gb&APPID=${APIkey}`;
 
@@ -27,6 +29,17 @@ const WeatherProvider = (props) => {
     e.preventDefault();
     setSearchLocation(query);
     document.getElementById('form').reset();
+  };
+
+  const handleChange = () => {
+    if (windUnits === 'mph') {
+      setWindUnits('kts');
+      setChecked(true);
+    } else {
+      setWindUnits('mph');
+      setChecked(false);
+    }
+    console.log(windUnits);
   };
 
   useEffect(() => {
@@ -58,6 +71,10 @@ const WeatherProvider = (props) => {
       location,
       loading,
       searchError,
+      checked,
+      setChecked,
+      windUnits,
+      handleChange,
       handleSearchChange,
       handleFormSubmit,
     }}

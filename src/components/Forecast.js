@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip'
 import cardinalDirection from '../utils/cardinalDirection';
 import dateFormatter from '../utils/dateFormatter';
 import windColorPicker from '../utils/windColorPicker';
+import { WeatherContext } from '../context/index';
 
 
 const Weather = styled.section`
@@ -105,6 +106,10 @@ const Weather = styled.section`
 `;
 
 const Forecast = ({ weather }) => {
+  const appContext = useContext(WeatherContext);
+  const {
+    windUnits
+  } = appContext;
   const iD = weather.dt_txt.split(/[- :]/);
   const date = new Date(iD[0], iD[1] - 1, iD[2], iD[3], iD[4], iD[5]);
   const fullDate = dateFormatter(date);
@@ -114,6 +119,7 @@ const Forecast = ({ weather }) => {
   const { rain } = weather;
   const dateHeader = hour === 0 ? <div className="date__header"><h2>{fullDate}</h2></div> : null;
   const windColor = windColorPicker(Math.floor(weather.wind.speed * 2.237));
+  const windSpeed = windUnits === 'mph' ? Math.floor(weather.wind.speed * 2.237) : Math.floor(weather.wind.speed * 1.944);
 
   return (
     <Weather>
@@ -127,13 +133,13 @@ const Forecast = ({ weather }) => {
         <ReactTooltip id="wind-d" type="info">
           <span>Wind Direction</span>
         </ReactTooltip>
-        <li data-tip data-for="wind-s" className="color wind wind__speed">{`${Math.floor(weather.wind.speed * 2.237)}mph`}</li>
+        <li data-tip data-for="wind-s" className="color wind wind__speed">{`${windSpeed}${windUnits === 'mph' ? 'mph' : 'kts'}`}</li>
         <ReactTooltip id="wind-s" type="info">
           <span>Wind Speed</span>
         </ReactTooltip>
         <li data-tip data-for="temp" className="temperature">
           {`${Math.floor(weather.main.temp - 273.15)}`}
-          &deg;
+          &deg;C
         </li>
         <ReactTooltip id="temp" type="info">
           <span>Temperature</span>
