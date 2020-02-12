@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -117,6 +118,7 @@ const Forecast = ({ weather }) => {
   const minute = date.getMinutes();
   const time = (hour < 10 ? `0${hour}:${minute}0` : `${hour}:${minute}0`);
   const { rain } = weather;
+  const { snow } = weather;
   const dateHeader = hour === 0 ? <div className="date__header"><h2>{fullDate}</h2></div> : null;
   const windColor = windColorPicker(Math.floor(weather.wind.speed * 2.237));
   const windSpeed = windUnits === 'mph' ? Math.floor(weather.wind.speed * 2.237) : Math.floor(weather.wind.speed * 1.944);
@@ -150,10 +152,10 @@ const Forecast = ({ weather }) => {
           </div>
         </li>
         <ReactTooltip id="weather" type="info">
-          <span>Weather</span>
+          <span>{weather.weather[0].description}</span>
         </ReactTooltip>
         <li data-tip data-for="precip" className="rain">
-          {rain ? Math.round(rain['3h'] * 10) / 10 : 0}
+          {rain ? Math.round(rain['3h'] * 10) / 10 : snow ? Math.round(snow['3h'] * 10) / 10 : 0}
           mm
         </li>
         <ReactTooltip id="precip" type="info">
@@ -175,8 +177,9 @@ Forecast.propTypes = {
     dt_txt: PropTypes.string.isRequired,
     wind: PropTypes.number.isRequired,
     main: PropTypes.number.isRequired,
-    weather: PropTypes.string.isRequired,
+    weather: PropTypes.string,
     clouds: PropTypes.number.isRequired,
     rain: PropTypes.number.isRequired,
+    snow: PropTypes.number.isRequired,
   }).isRequired,
 };
