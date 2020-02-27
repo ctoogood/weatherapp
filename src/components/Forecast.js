@@ -152,7 +152,7 @@ const Forecast = ({ weather }) => {
           </div>
         </li>
         <ReactTooltip id="weather" type="info">
-          <span>{weather.weather[0].description}</span>
+          <span>Weather</span>
         </ReactTooltip>
         <li data-tip data-for="precip" className="rain">
           {rain ? Math.round(rain['3h'] * 10) / 10 : snow ? Math.round(snow['3h'] * 10) / 10 : 0}

@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
+import data from '../utils/gb.json';
 import { WeatherContext } from '../context/index';
+
+const cityList = data.map((entry) => entry.city);
 
 const Search = styled.section`
   height:3rem;
@@ -60,6 +63,7 @@ const ForecastSearch = () => {
   const { handleSearchChange, handleFormSubmit } = appContext;
   return (
     <Search>
+      {console.log(cityList)}
       <form id="form" onSubmit={(e) => handleFormSubmit(e)}>
         <div className="search__input">
           <input onChange={(e) => handleSearchChange(e)} type="text" id="search" placeholder="Search for a location..." autoComplete="off" />
